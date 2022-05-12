@@ -10,17 +10,17 @@
                 @Html.AntiForgeryToken()
                 <div class="mb-3">
                     <strong>Nome</strong>
-                    <input asp-for=Name class="d-block w-100"/>
+                    <input asp-for="Name" class="d-block w-100"/>
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <strong>Descrizione</strong>
-                    <input asp-for=Descrizione class="d-block w-100"/>
+                    <input asp-for="Descrizione" class="d-block w-100"/>
                     <span asp-validation-for="Descrizione" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <strong>Immagine</strong>
-                    <input asp-for=Image class="d-block w-100"/>
+                    <input asp-for="Image" class="d-block w-100"/>
                     <span asp-validation-for="Image" class="text-danger"></span>
                 </div>
                 <div>
