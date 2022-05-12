@@ -98,11 +98,23 @@ namespace La_mia_pizzeria.Controllers
         [HttpPost]
         public IActionResult Delete(int id)
         {
-            int PizzaIndexToRemove = GetPizzaById(id).Id;
+            int indexPizzaToDelete = -1;
 
-            PizzaData.GetPizzas().RemoveAt(PizzaIndexToRemove);
+            for (int i = 0; i < PizzaData.GetPizzas().Count; i++)
+            {
+                if (PizzaData.GetPizzas()[i].Id == id)
+                    indexPizzaToDelete = i;
+            }
 
-            return RedirectToAction("Index");
+            if (indexPizzaToDelete > -1)
+            {
+                PizzaData.GetPizzas().RemoveAt(indexPizzaToDelete);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return NotFound();
+            }
         }
     }
 }
