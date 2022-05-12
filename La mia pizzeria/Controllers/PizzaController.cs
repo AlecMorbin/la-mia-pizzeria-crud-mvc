@@ -68,8 +68,9 @@ namespace La_mia_pizzeria.Controllers
         public IActionResult Update(int id)
         {
             Pizza pizzaToEdit = GetPizzaById(id);
+
             if(pizzaToEdit != null)
-                return View("UpdateEntry",pizzaToEdit);
+                return View("Update",pizzaToEdit);
             else
                 return NotFound();
         }
@@ -78,9 +79,20 @@ namespace La_mia_pizzeria.Controllers
         public IActionResult Update(int id, Pizza model)
         {
             if(!ModelState.IsValid)
-                return Update(id);
+                return View(model);
 
-            return View("Index","Pizza");
+            Pizza pizzaToUpdate = GetPizzaById(id);
+
+            if (pizzaToUpdate != null)
+            {
+                pizzaToUpdate.Name = model.Name;
+                pizzaToUpdate.Descrizione = model.Descrizione;
+                pizzaToUpdate.Image = model.Image;
+
+                return RedirectToAction("Index");
+            }
+            else
+                return NotFound();
         }
 
         [HttpPost]
