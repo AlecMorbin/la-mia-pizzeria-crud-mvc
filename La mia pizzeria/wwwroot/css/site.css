@@ -14,5 +14,9 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 0px;
+    background-image: url("/img/bg-image-pizza.jpg");
+    background-size: contain;
+    background-repeat:round
 }
+

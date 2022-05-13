@@ -42,7 +42,7 @@ namespace La_mia_pizzeria.Controllers
                 return View("CreateEntry",nuovaPizza);
             }
 
-            Pizza pizzaIndicizzata = new Pizza(PizzaData.GetPizzas().Count,nuovaPizza.Name,nuovaPizza.Descrizione,nuovaPizza.Image);
+            Pizza pizzaIndicizzata = new Pizza(PizzaData.GetPizzas().Count,nuovaPizza.Name,nuovaPizza.Descrizione,nuovaPizza.Prezzo,nuovaPizza.Image);
             //Modello è corretto perciò aggiungo la pizza
             PizzaData.GetPizzas().Add(pizzaIndicizzata);
 
