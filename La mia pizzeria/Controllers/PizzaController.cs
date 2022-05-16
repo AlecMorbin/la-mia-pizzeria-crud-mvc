@@ -96,6 +96,7 @@ namespace La_mia_pizzeria.Controllers
                     pizzaToEdit.Name = model.Name;
                     pizzaToEdit.Descrizione = model.Descrizione;
                     pizzaToEdit.Image = model.Image;
+                    pizzaToEdit.Prezzo = model.Prezzo;
 
                     db.SaveChanges();
                     

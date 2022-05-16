@@ -39,7 +39,7 @@ body {
         line-height: 78px;
         transform: skew(0, -10deg);
     }
-
+    
         .banner .line:after,
         .banner .line:first-child:before {
             position: absolute;
@@ -54,13 +54,13 @@ body {
             content: '';
             transform: skew(0, 15deg);
         }
-
+        
         .banner .line:first-child:before {
             top: -10px;
             right: 0;
             left: auto;
         }
-
+        
         .banner .line:first-child:before,
         .banner .line:last-child:after {
             width: 0;
@@ -75,7 +75,7 @@ body {
             top: 12px;
             border-color: transparent transparent rgba(180,180,180,0.8) rgba(180,180,180,0.8);
         }
-
+        
     .banner span {
         display: block;
         width: 100%;

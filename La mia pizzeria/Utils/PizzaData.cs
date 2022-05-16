@@ -4,26 +4,26 @@ namespace La_mia_pizzeria.Utils
 {
     public static class PizzaData
     {
-        private static List<Pizza> pizzas=null;
+        private static List<Pizza> pizzaList=null;
 
         public static List<Pizza> GetPizzas()
         {
-            if (pizzas != null)
+            if (pizzaList != null)
             {
-                return pizzas;
+                return pizzaList;
             }
 
             List<Pizza> newPizzas = new List<Pizza>();
 
             for (int i = 0; i < 6; i++)
             {
-                Pizza pizza = new Pizza( "Pizza n-" + (i + 1), "Lorem Ipsum is simply dummy text of the printing and typesetting... ",5.5, "/img/pizza-margherita.png");
+                Pizza pizza = new Pizza( "Pizza n-" + (i + 1), "Lorem Ipsum is simply dummy text of the printing and typesetting... ",5.5f, "/img/pizza-margherita.png");
                 newPizzas.Add(pizza);
             }
 
-            pizzas = newPizzas;
+            pizzaList = newPizzas;
 
-            return pizzas;
+            return pizzaList;
         }
     }
 }
