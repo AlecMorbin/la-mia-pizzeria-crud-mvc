@@ -10,13 +10,20 @@ namespace La_mia_pizzeria.Controllers.Api
     public class PizzaController : ControllerBase
     {
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get(string? search)
         {
             List<Pizza> listPizzas = new List<Pizza>();
 
             using (PizzaContext db = new PizzaContext()) 
             {
-                listPizzas = db.Pizzas.ToList<Pizza>();
+                if (!String.IsNullOrEmpty(search))
+                {
+                    listPizzas = db.Pizzas.Where(pizza => pizza.Name.Contains(search) || pizza.Descrizione.Contains(search)).ToList();
+                }
+                else
+                {
+                    listPizzas = db.Pizzas.ToList();
+                }
             }
 
             return Ok(listPizzas);
