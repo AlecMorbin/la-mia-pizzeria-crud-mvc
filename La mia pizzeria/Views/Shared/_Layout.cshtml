@@ -6,7 +6,6 @@
     <title>@ViewData["Title"] La mia pizzeria</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Prima_pagina_statica.styles.css" asp-append-version="true" />
 </head>
 <body class="d-flex flex-column min-vh-100">
     <header>
@@ -37,6 +36,9 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
