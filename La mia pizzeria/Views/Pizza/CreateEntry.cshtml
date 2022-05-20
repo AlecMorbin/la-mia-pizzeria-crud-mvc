@@ -1,4 +1,4 @@
-﻿@model Pizza
+﻿@model PizzaCategories
 
 <div class="container rounded bg-dark text-light mt-5 pb-2">
     <div class="row">
@@ -10,23 +10,33 @@
                 @Html.AntiForgeryToken()
                 <div class="mb-3">
                     <strong>Nome</strong>
-                    <input asp-for="Name" class="d-block w-100"/>
-                    <span asp-validation-for="Name" class="text-danger"></span>
+                    <input asp-for="Pizza.Name" class="d-block w-100"/>
+                    <span asp-validation-for="Pizza.Name" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <strong>Descrizione</strong>
-                    <input asp-for="Descrizione" class="d-block w-100"/>
-                    <span asp-validation-for="Descrizione" class="text-danger"></span>
+                    <input asp-for="Pizza.Descrizione" class="d-block w-100"/>
+                    <span asp-validation-for="Pizza.Descrizione" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <strong>Immagine</strong>
-                    <input asp-for="Image" class="d-block w-100"/>
-                    <span asp-validation-for="Image" class="text-danger"></span>
+                    <input asp-for="Pizza.Image" class="d-block w-100"/>
+                    <span asp-validation-for="Pizza.Image" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <strong>Prezzo</strong>
-                    <input asp-for="Prezzo" class="d-block w-100"/>
-                    <span asp-validation-for="Prezzo" class="text-danger"></span>
+                    <input asp-for="Pizza.Prezzo" class="d-block w-100"/>
+                    <span asp-validation-for="Pizza.Prezzo" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <strong>Categoria:</strong>
+                    <select>
+                        <option selected>Seleziona una categoria</option>
+                        @foreach(Category category in Model.Categories)
+                        {
+                            <option value="@category.Id">@category.Name</option>
+                        }
+                    </select>
                 </div>
                 <div>
                     <input type="submit" class="btn btn-small btn-success mb-3" value="Salva" />

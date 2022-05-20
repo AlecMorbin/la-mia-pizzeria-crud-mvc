@@ -38,7 +38,17 @@ namespace La_mia_pizzeria.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View("CreateEntry");
+            using(PizzaContext db = new PizzaContext())
+            {
+                List<Category> categories = db.Category.ToList();
+
+                PizzaCategories model = new PizzaCategories();
+                model.Pizza = new Pizza();
+                model.Categories = categories;
+
+                return View("CreateEntry",model);
+
+            }
         }
 
 
