@@ -88,23 +88,38 @@ namespace La_mia_pizzeria.Controllers
         public IActionResult Update(int id)
         {
             Pizza? pizzaToEdit = null;
+            List<Category> categories =new();
 
             using (PizzaContext db = new PizzaContext())
             {
                 pizzaToEdit = db.Pizzas.Where(pizza => pizza.Id == id).FirstOrDefault();
+
+                categories = db.Category.ToList();
             }
 
             if (pizzaToEdit != null)
-                return View("Update", pizzaToEdit);
+            {
+                PizzaCategories model = new PizzaCategories();
+                model.Pizza = pizzaToEdit;
+                model.Categories = categories;
+
+                return View("Update", model);
+            }
             else
                 return NotFound();
         }
 
         [HttpPost]
-        public IActionResult Update(int id, Pizza model)
+        public IActionResult Update(int id, PizzaCategories model)
         {
             if (!ModelState.IsValid)
             {
+                using(PizzaContext db = new PizzaContext())
+                {
+                    List<Category> categories = db.Category.ToList();
+
+                    model.Categories = categories;
+                }
                 return View("Update", model);
             }
 
@@ -116,10 +131,11 @@ namespace La_mia_pizzeria.Controllers
 
                 if (pizzaToEdit != null)
                 {
-                    pizzaToEdit.Name = model.Name;
-                    pizzaToEdit.Descrizione = model.Descrizione;
-                    pizzaToEdit.Image = model.Image;
-                    pizzaToEdit.Prezzo = model.Prezzo;
+                    pizzaToEdit.Name = model.Pizza.Name;
+                    pizzaToEdit.Descrizione = model.Pizza.Descrizione;
+                    pizzaToEdit.Image = model.Pizza.Image;
+                    pizzaToEdit.Prezzo = model.Pizza.Prezzo;
+                    pizzaToEdit.CategoryId = model.Pizza.CategoryId;
 
                     db.SaveChanges();
                     
