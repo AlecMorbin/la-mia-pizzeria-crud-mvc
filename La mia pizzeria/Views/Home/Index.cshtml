@@ -56,6 +56,13 @@
                     document.getElementById('post-div').classList.remove('d-none');
 
                     result.data.forEach(pizza => {
+
+                        var  category_name = "Nessuna categoria assegnata";
+
+                        if (pizza.category != null) {
+                            category_name = pizza.category.name;
+                        }
+
                         console.log("Posting pizzas");
                         document.querySelector('.js_pizza_cards').innerHTML +=
                             `
@@ -65,6 +72,9 @@
                                 <div class="card-body">
                                   <h5 class="card-title">${pizza.name}</h5><span class="text-end">${pizza.prezzo} &euro;</span>
                                   <p class="card-text">${pizza.descrizione}</p>
+                                </div>
+                                <div class="card-footer">
+                                    ${category_name}
                                 </div>
                               </div>
                             </div>

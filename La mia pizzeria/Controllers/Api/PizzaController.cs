@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using La_mia_pizzeria.Models;
 using La_mia_pizzeria.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace La_mia_pizzeria.Controllers.Api
 {
@@ -22,7 +23,7 @@ namespace La_mia_pizzeria.Controllers.Api
                 }
                 else
                 {
-                    listPizzas = db.Pizzas.ToList();
+                    listPizzas = db.Pizzas.Include(pizza => pizza.Category).ToList();
                 }
             }
 
