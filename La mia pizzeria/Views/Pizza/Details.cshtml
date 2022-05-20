@@ -22,6 +22,15 @@
                     <strong>Prezzo</strong>
                     @Model.Prezzo &euro;
                 </p>
+                <p>
+                    <strong>Categoria</strong>
+                    @if (Model.Category != null)
+                    {
+                        @Model.Category.Name
+                    }else{
+                        <span>Nessuna categoria associata</span>
+                    }
+                </p>
             </div>
         </div>
     </div>
