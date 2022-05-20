@@ -54,16 +54,22 @@ namespace La_mia_pizzeria.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Pizza nuovaPizza)
+        public IActionResult Create(PizzaCategories data)
         {
             if (!ModelState.IsValid)
             {
-                return View("CreateEntry",nuovaPizza);
+                return View("CreateEntry",data);
             }
 
             using(PizzaContext db = new PizzaContext())
             {
-                Pizza pizzaToCreate = new Pizza(nuovaPizza.Name,nuovaPizza.Descrizione,nuovaPizza.Prezzo,nuovaPizza.Image);
+                Pizza pizzaToCreate = new Pizza();
+                pizzaToCreate.Name = data.Pizza.Name; 
+                pizzaToCreate.Descrizione = data.Pizza.Descrizione;
+                pizzaToCreate.Prezzo = data.Pizza.Prezzo;
+                pizzaToCreate.Image = data.Pizza.Image; 
+                pizzaToCreate.CategoryId = data.Pizza.CategoryId;
+
                 db.Pizzas.Add(pizzaToCreate);
                 db.SaveChanges();
             }
