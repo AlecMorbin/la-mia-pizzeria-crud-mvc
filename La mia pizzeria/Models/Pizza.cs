@@ -23,6 +23,9 @@ namespace La_mia_pizzeria.Models
         [Required(ErrorMessage = "Un prezzo è obbligatoria")]
         public double Prezzo { get; set; }
 
+        public int? CategoryId { get; set; }
+        public Category? Category { get; set; }
+
         public Pizza() { }
 
         public Pizza(string name, string descrizione,double prezzo, string image)
